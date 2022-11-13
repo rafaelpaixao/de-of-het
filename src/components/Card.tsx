@@ -12,7 +12,7 @@ export function Card(props: {
       onDragStart={props.onDragStart}
       onDragEnd={props.onDragEnd}
     >
-      {props.content}
+      <div>{props.content}</div>
     </div>
   );
 }

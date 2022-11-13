@@ -8,6 +8,7 @@ export function App() {
   return (
     <Router>
       <Navbar />
+      <h1>De of Het?</h1>
       <AppRoutes />
     </Router>
   );

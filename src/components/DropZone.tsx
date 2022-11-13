@@ -12,7 +12,7 @@ export function DropZone(props: { content: DeHet; onDrop: () => void }) {
 
   return (
     <div class="drop-zone" onDrop={props.onDrop} onDragOver={onDragOver}>
-      {props.content}
+      <div>{props.content}</div>
     </div>
   );
 }
