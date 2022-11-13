@@ -1,20 +1,14 @@
-## Usage
+# De of Het
 
-Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
+Swipe to the right article (De or Het) for each Dutch word. At the end of the game, you can see how many words you got right.
 
-This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.
-
-```bash
-$ npm install # or pnpm install or yarn install
-```
-
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+The Dutch language is pretty interesting, however there are certain things in the language that have no rules (such as using articles de or het), which makes it difficult to learn. This game brings a different yet fun way of memorizing articles and pronunciation of each word.
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm dev` or `npm start`
+### `pnpm dev`
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.

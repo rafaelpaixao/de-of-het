@@ -1,7 +1,7 @@
 {
-  "name": "vite-template-solid",
+  "name": "de-of-het",
   "version": "0.0.0",
-  "description": "",
+  "description": "Swipe to the right article (De or Het) for each Dutch word. At the end of the game, you can see how many words you got right.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
