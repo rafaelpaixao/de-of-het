@@ -1,22 +1,43 @@
 import "./Board.scss";
 
+import { For, Show, createSignal } from "solid-js";
+import { Question, useGame } from "../game";
+
 import { Card } from "./Card";
 import { CardStack } from "./CardStack";
-import { For } from "solid-js";
-import { Option } from "./Option";
-import { useGame } from "../game";
+import { DeHet } from "../types";
+import { DropZone } from "./DropZone";
+import { Score } from "./Score";
 
 export function Board() {
-  const { questions } = useGame();
+  const { questions, remaining } = useGame();
+
+  const [dragged, setDragged] = createSignal<Question>();
+
+  const onDrop = (answer: DeHet) => {
+    dragged()?.setAnswer(answer);
+    setDragged();
+  };
+
   return (
-    <div class="board">
-      <Option name="DE" />
-      <CardStack>
-        <For each={questions}>
-          {(question) => <Card content={question.word.content} />}
-        </For>
-      </CardStack>
-      <Option name="HET" />
+    <div class={"board"}>
+      <Show when={remaining() > 0} fallback={<Score />}>
+        <DropZone content="de" onDrop={() => onDrop("de")} />
+        <CardStack>
+          <For each={questions}>
+            {(question) => (
+              <Show when={question.answer() === undefined}>
+                <Card
+                  content={question.word.content}
+                  onDragStart={() => setDragged(question)}
+                  onDragEnd={() => setDragged()}
+                />
+              </Show>
+            )}
+          </For>
+        </CardStack>
+        <DropZone content="het" onDrop={() => onDrop("het")} />
+      </Show>
     </div>
   );
 }
