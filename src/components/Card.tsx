@@ -1,17 +1,12 @@
 import "./Card.scss";
 
-export function Card(props: {
-  content: string;
-  onDragStart: () => void;
-  onDragEnd: () => void;
-}) {
+import { createDraggable } from "@thisbeyond/solid-dnd";
+
+export function Card(props: { id: number; content: string }) {
+  const draggable = createDraggable(props.id);
+
   return (
-    <div
-      class="card"
-      draggable={true}
-      onDragStart={props.onDragStart}
-      onDragEnd={props.onDragEnd}
-    >
+    <div class="card" use:draggable>
       <div>{props.content}</div>
     </div>
   );

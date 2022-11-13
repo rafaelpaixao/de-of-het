@@ -8,35 +8,33 @@ import { CardStack } from "./CardStack";
 import { DeHet } from "../types";
 import { DropZone } from "./DropZone";
 import { Score } from "./Score";
+import { useDragDropContext } from "@thisbeyond/solid-dnd";
 
 export function Board() {
   const { questions, remaining } = useGame();
 
-  const [dragged, setDragged] = createSignal<Question>();
+  const [, { onDragEnd }] = useDragDropContext();
 
-  const onDrop = (answer: DeHet) => {
-    dragged()?.setAnswer(answer);
-    setDragged();
-  };
+  onDragEnd(({ draggable, droppable }) => {
+    if (droppable) {
+      questions[draggable.id].setAnswer(droppable.id);
+    }
+  });
 
   return (
     <div class={"board"}>
       <Show when={remaining() > 0} fallback={<Score />}>
-        <DropZone content="de" onDrop={() => onDrop("de")} />
+        <DropZone content="de" />
         <CardStack>
           <For each={questions}>
-            {(question) => (
+            {(question, index) => (
               <Show when={question.answer() === undefined}>
-                <Card
-                  content={question.word.content}
-                  onDragStart={() => setDragged(question)}
-                  onDragEnd={() => setDragged()}
-                />
+                <Card id={index()} content={question.word.content} />
               </Show>
             )}
           </For>
         </CardStack>
-        <DropZone content="het" onDrop={() => onDrop("het")} />
+        <DropZone content="het" />
       </Show>
     </div>
   );

@@ -1,17 +1,13 @@
 import "./DropZone.scss";
 
 import type { DeHet } from "../types";
-import type { JSX } from "solid-js";
+import { createDroppable } from "@thisbeyond/solid-dnd";
 
-export function DropZone(props: { content: DeHet; onDrop: () => void }) {
-  const onDragOver: JSX.EventHandlerUnion<HTMLDivElement, DragEvent> = (
-    event
-  ) => {
-    event.preventDefault();
-  };
+export function DropZone(props: { content: DeHet }) {
+  const droppable = createDroppable(props.content);
 
   return (
-    <div class="drop-zone" onDrop={props.onDrop} onDragOver={onDragOver}>
+    <div class="drop-zone" use:droppable>
       <div>{props.content}</div>
     </div>
   );

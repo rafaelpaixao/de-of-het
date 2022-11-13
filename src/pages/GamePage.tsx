@@ -1,3 +1,5 @@
+import { DragDropProvider, DragDropSensors } from "@thisbeyond/solid-dnd";
+
 import { Board } from "../components/Board";
 import { GameProvider } from "../game/context";
 import { Page } from "../components/Page";
@@ -7,7 +9,11 @@ export default function GamePage() {
   return (
     <Page>
       <GameProvider words={createWords()}>
-        <Board />
+        <DragDropProvider>
+          <DragDropSensors>
+            <Board />
+          </DragDropSensors>
+        </DragDropProvider>
       </GameProvider>
     </Page>
   );
