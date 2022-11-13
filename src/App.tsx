@@ -1,19 +1,15 @@
-import { Component, createSignal } from 'solid-js';
-import './App.scss';
-import Counter from './Counter';
+import "./App.scss";
 
-const App: Component = () => {
-  const [counter, setCounter] = createSignal(0);
-  setInterval(setCounter, 1000, (c: number) => c + 1);
+import { AppRoutes } from "./routes";
+import { Navbar } from "./components/Navbar";
 
+export function App() {
   return (
-    <>
-      <div>
-        <h1 class="header">{counter()}</h1>
-      </div>
-      <Counter />
-    </>
+    <div class="app">
+      <Navbar />
+      <AppRoutes />
+    </div>
   );
-};
+}
 
 export default App;
