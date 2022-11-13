@@ -1,12 +1,8 @@
 import "./Card.scss";
 
-import { createDraggable } from "@thisbeyond/solid-dnd";
-
-export function Card(props: { id: number; content: string }) {
-  const draggable = createDraggable(props.id);
-
+export function Card(props: { content: string }) {
   return (
-    <div class="card" use:draggable>
+    <div class="card">
       <div>{props.content}</div>
     </div>
   );

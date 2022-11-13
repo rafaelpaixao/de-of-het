@@ -7,4 +7,14 @@
   font-size: 30rem;
   border-radius: 10rem;
   background-image: linear-gradient(-180deg, #d94e47 2%, #df1165);
+  transition-duration: 0.8s;
+  transition-property: transform;
+}
+
+.rotateLeft .card {
+  transform: rotate(10deg);
+}
+
+.rotateRight .card {
+  transform: rotate(-10deg);
 }
