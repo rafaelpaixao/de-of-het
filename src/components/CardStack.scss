@@ -1,0 +1,9 @@
+.card-stack {
+  position: relative;
+  width: 130rem;
+  height: 200rem;
+
+  .card {
+    position: absolute;
+  }
+}

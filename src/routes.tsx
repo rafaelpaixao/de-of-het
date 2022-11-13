@@ -2,9 +2,9 @@ import { Route, Routes } from "@solidjs/router";
 
 import { lazy } from "solid-js";
 
-const HomePage = lazy(() => import("./HomePage"));
-const AboutPage = lazy(() => import("./AboutPage"));
-const GamePage = lazy(() => import("./GamePage"));
+const HomePage = lazy(() => import("./pages/HomePage"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const GamePage = lazy(() => import("./pages/GamePage"));
 
 export function AppRoutes() {
   return (
